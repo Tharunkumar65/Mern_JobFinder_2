@@ -13,6 +13,7 @@ const Jobs = () => {
     const [filteredJobs, setFilteredJobs] = useState([]);
     const dispatch = useDispatch();
     const queryParams = new URLSearchParams(searchedQuery).toString();
+    console.log(queryParams)
 
     useEffect(()=>{
       const fetchAllJobs = async () => {

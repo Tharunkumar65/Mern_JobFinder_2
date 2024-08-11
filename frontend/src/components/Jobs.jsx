@@ -13,7 +13,6 @@ const Jobs = () => {
     const [filteredJobs, setFilteredJobs] = useState([]);
     const dispatch = useDispatch();
     const queryParams = new URLSearchParams(searchedQuery).toString();
-    console.log(queryParams)
 
     useEffect(()=>{
       const fetchAllJobs = async () => {
@@ -47,8 +46,7 @@ const Jobs = () => {
             const locationMatch = (!location || job.location.toLowerCase() === location.toLowerCase());
 
             // Industry search: Matches title or requirements (assuming industry == job title)
-            const industryMatch = (!industry || job.title.toLowerCase() === industry.toLowerCase() ||
-                job.requirements.some(req => req.toLowerCase() === industry.toLowerCase()));
+            const industryMatch = (!industry || job.title.toLowerCase() === industry.toLowerCase());
 
             // Salary search: Matches salary ranges (assuming salary is in LPA)
             const salaryMatch = (!salary || matchSalaryRange(job.salary, salary));

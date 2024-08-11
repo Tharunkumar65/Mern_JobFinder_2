@@ -12,10 +12,12 @@ const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector((store) => store.job);
     const [filteredJobs, setFilteredJobs] = useState([]);
     const dispatch = useDispatch();
+    const queryParams = new URLSearchParams(searchedQuery).toString();
+
     useEffect(()=>{
       const fetchAllJobs = async () => {
           try {
-              const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${searchedQuery}`,{withCredentials:true});
+              const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${queryParams}`,{withCredentials:true});
               if(res.data.success){
                   dispatch(setAllJobs(res.data.jobs));
               }

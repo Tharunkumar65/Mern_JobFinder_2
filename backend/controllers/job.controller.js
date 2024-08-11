@@ -39,20 +39,25 @@ export const getAllJobs = async (req, res) => {
         const { text, location, industry, salary } = req.query;
         const keyword = text || "";
 
-        // Build your query object based on the provided search parameters
+        // Build the query object
         const query = {
-            $or: [
-                { title: { $regex: keyword, $options: "i" } },
-                { description: { $regex: keyword, $options: "i" } },
-            ],
+            ...(keyword && {
+                $or: [
+                    { title: { $regex: keyword, $options: "i" } },
+                    { description: { $regex: keyword, $options: "i" } },
+                ]
+            }),
             ...(location && { location: { $regex: location, $options: "i" } }),
             ...(industry && { industry: { $regex: industry, $options: "i" } }),
-            ...(salary && { salary: { $gte: parseInt(salary) } })
+            ...(salary && { salary: { $gte: salary } })
         };
 
+        // Execute the query with optimizations
         const jobs = await Job.find(query)
             .populate({ path: "company" })
-            .sort({ createdAt: -1 });
+            .sort({ createdAt: -1 })
+            .select('title description location industry salary createdAt') // Select only needed fields
+            .lean(); // Use lean for performance
 
         if (!jobs || jobs.length === 0) {
             return res.status(404).json({
@@ -74,6 +79,7 @@ export const getAllJobs = async (req, res) => {
         });
     }
 };
+
 
 // student
 export const getJobById = async (req, res) => {

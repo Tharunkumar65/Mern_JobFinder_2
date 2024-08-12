@@ -36,33 +36,17 @@ export const postJob = async (req, res) => {
 // student k liye
 export const getAllJobs = async (req, res) => {
     try {
-        const { text, location, industry, salary } = req.query;
-        const keyword = text || "";
-
-        // Build the query object
-        const query = {
-            ...(keyword && {
-                $or: [
-                    { title: { $regex: keyword, $options: "i" } },
-                    { description: { $regex: keyword, $options: "i" } },
-                ]
-            }),
-            ...(location && { location: { $regex: location, $options: "i" } }),
-            ...(industry && { industry: { $regex: industry, $options: "i" } }),
-            ...(salary && { salary: { $gte: salary } })
-        };
-
-        // Execute the query with optimizations
-        const jobs = await Job.find(query)
+           
+        // Fetch jobs based on the query
+        const jobs = await Job.find({})
             .populate({ path: "company" })
             .sort({ createdAt: -1 })
-            .select('title description location industry salary createdAt') // Select only needed fields
-            .lean(); // Use lean for performance
 
         if (!jobs || jobs.length === 0) {
-            return res.status(404).json({
-                message: "No jobs found.",
-                success: false
+            return res.status(200).json({
+                message: "No matching jobs found, but jobs exist in the database.",
+                success: true,
+                jobs: [] // Return an empty array instead of a 404
             });
         }
 
@@ -71,7 +55,7 @@ export const getAllJobs = async (req, res) => {
             success: true
         });
     } catch (error) {
-        console.error("Error fetching jobs:", error);
+        console.error("Error fetching jobs:", error.message);
         return res.status(500).json({
             message: "An error occurred while fetching jobs.",
             success: false,
@@ -79,7 +63,6 @@ export const getAllJobs = async (req, res) => {
         });
     }
 };
-
 
 // student
 export const getJobById = async (req, res) => {

@@ -5,6 +5,7 @@ import { Avatar, AvatarImage } from './ui/avatar'
 
 const LatestJobCards = ({ job }) => {
     const navigate = useNavigate();
+    // console.log(job)
     return (
         <div 
         onClick={() => navigate(`/description/${job._id}`)} 

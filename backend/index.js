@@ -19,7 +19,7 @@ app.use(cookieParser());
 const corsOptions = {
     origin:'https://mern-jobfinder--delta.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Ensure all necessary methods are allowed
-    credentials:true
+    credentials:true,
 }
 
 app.use(cors(corsOptions));

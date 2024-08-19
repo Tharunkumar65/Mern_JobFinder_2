@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
     origin:'https://mern-jobfinder--delta.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Ensure all necessary methods are allowed
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     credentials:true,
 }
 

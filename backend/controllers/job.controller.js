@@ -1,6 +1,6 @@
 import { Job } from "../models/job.model.js";
 
-// admin post krega job
+
 export const postJob = async (req, res) => {
     try {
         const { title, description, requirements, salary, location, jobType, experience, position, companyId } = req.body;
@@ -33,11 +33,11 @@ export const postJob = async (req, res) => {
         console.log(error);
     }
 }
-// student k liye
+
 export const getAllJobs = async (req, res) => {
     try {
            
-        // Fetch jobs based on the query
+        
         const jobs = await Job.find({})
             .populate({ path: "company" })
             .sort({ createdAt: -1 })
@@ -46,7 +46,7 @@ export const getAllJobs = async (req, res) => {
             return res.status(200).json({
                 message: "No matching jobs found, but jobs exist in the database.",
                 success: true,
-                jobs: [] // Return an empty array instead of a 404
+                jobs: [] 
             });
         }
 
@@ -82,7 +82,7 @@ export const getJobById = async (req, res) => {
         console.log(error);
     }
 }
-// admin kitne job create kra hai abhi tk
+
 export const getAdminJobs = async (req, res) => {
     try {
         const adminId = req.id;

@@ -9,8 +9,8 @@ export const register = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
         
-        // Log received data
-        console.log("Received data:", fullname, email, phoneNumber, password, role);
+        
+        // console.log("Received data:", fullname, email, phoneNumber, password, role);
 
         // Check for missing fields
         if (!fullname || !email || !phoneNumber || !password || !role) {
@@ -31,7 +31,7 @@ export const register = async (req, res) => {
         const file = req.file;
         const fileUri = getDataUri(file);
 
-        // Upload file to Cloudinary
+        
         const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
         // Check if user already exists
@@ -43,10 +43,10 @@ export const register = async (req, res) => {
             });
         }
 
-        // Hash password
+        
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create user
+        
         await User.create({
             fullname,
             email,
@@ -58,20 +58,20 @@ export const register = async (req, res) => {
             },
         });
 
-        // Send success response
+        
         return res.status(201).json({
             message: "Account created successfully.",
             success: true,
         });
     } catch (error) {
-        // Log error for debugging
+       
         console.error("Error during registration:", error);
 
-        // Send error response
+        
         return res.status(500).json({
             message: "An error occurred during registration.",
             success: false,
-            error: error.message, // Include error message for debugging
+            error: error.message, 
         });
     }
 };
@@ -155,7 +155,7 @@ export const updateProfile = async (req, res) => {
         if(skills){
             skillsArray = skills.split(",");
         }
-        const userId = req.id; // middleware authentication
+        const userId = req.id; 
         let user = await User.findById(userId);
 
         if (!user) {
@@ -164,17 +164,17 @@ export const updateProfile = async (req, res) => {
                 success: false
             })
         }
-        // updating data
+     
         if(fullname) user.fullname = fullname
         if(email) user.email = email
         if(phoneNumber)  user.phoneNumber = phoneNumber
         if(bio) user.profile.bio = bio
         if(skills) user.profile.skills = skillsArray
       
-        // resume comes later here...
+
         if(cloudResponse){
-            user.profile.resume = cloudResponse.secure_url // save the cloudinary url
-            user.profile.resumeOriginalName = file.originalname // Save the original file name
+            user.profile.resume = cloudResponse.secure_url 
+            user.profile.resumeOriginalName = file.originalname 
         }
 
 

@@ -22,7 +22,6 @@ const filterData = [
 const FilterCard = () => {
     const dispatch = useDispatch();
 
-    // Track selected values for each filter type separately
     const [selectedFilters, setSelectedFilters] = useState({
         location: '',
         industry: '',
@@ -30,13 +29,11 @@ const FilterCard = () => {
     });
 
     const changeHandler = (filterType, value) => {
-        // Update the selected value for the filter type
         setSelectedFilters((prevFilters) => ({
             ...prevFilters,
             [filterType]: value,
         }));
 
-        // Dispatch the action immediately
         dispatch(setSearchedQuery({ filterType, value }));
     };
 

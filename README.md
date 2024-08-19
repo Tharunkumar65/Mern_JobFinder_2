@@ -76,43 +76,63 @@ The JobFinder App is a dynamic full-stack web application built using the MERN s
 ### 11. Student Job Application Tracking
 - Allow students to check the status of their applied jobs (e.g., pending, accepted, rejected) in their profiles.
 
-## Set-Up Project in your machine
+## Set-Up Project on Your Machine
 
-1. Fork the repo and clone it.
-2. Create a new branch.
-3. Make sure you have `npm` Node.js installed in your system. MongoAtlas is used, so no need for local MongoDB setup.
-4. MongoAtlas Setup
-Set up your .env file and paste in the URI that you get from MongoAtlas. Also set token secret to anything, it is used for jwt authentication.
-   
+1. **Fork and Clone the Repository**
+   - Start by forking the repository and cloning it to your local machine.
 
-```
-MONGO_URI=mongodb+srv://<dbUser>:<password>@cluster0-m5jph.gcp.mongodb.net/test?retryWrites=true&w=majority
-SECRET_KEY=your secret key
+2. **Create a New Branch**
+   - Create a new branch in your local repository for your work.
 
-```
-You need to remember to paste in the <dbUser> and <password>. Do NOT share it publicly, and do NOT include the .env file in commits.
-5. To integrate Cloudinary for handling file and image uploads in your application, follow these steps:
+3. **Install Node.js and npm**
+   - Ensure that you have `Node.js` and `npm` installed on your system.
+
+4. **MongoDB Atlas Setup**
+   - Set up your `.env` file in the backend directory with the following environment variables:
+     ```plaintext
+     MONGO_URI=mongodb+srv://<dbUser>:<password>@cluster0-m5jph.gcp.mongodb.net/test?retryWrites=true&w=majority
+     SECRET_KEY=your_secret_key
+     ```
+   - Replace `<dbUser>` and `<password>` with your MongoDB Atlas credentials. **Do NOT share this information publicly** and make sure not to include the `.env` file in any commits.
+
+5. **Integrate Cloudinary for File and Image Uploads**
 
    1. **Sign Up for Cloudinary**
-       - Go to [Cloudinary](https://cloudinary.com/) and sign up for a free account.
+      - Visit [Cloudinary](https://cloudinary.com/) and sign up for a free account.
 
-   2. **Get Your Cloudinary Credentials**
-      - After signing up, navigate to your Cloudinary dashboard.
-      - Locate your **Cloud Name**, **API Key**, and **API Secret** in the dashboard.
+   2. **Obtain Your Cloudinary Credentials**
+      - After signing up, go to your Cloudinary dashboard.
+      - Find your **Cloud Name**, **API Key**, and **API Secret**.
 
-   3. **Set Up Environment Variables**
-     - Add the following lines to your `.env` file, replacing the placeholders with your actual Cloudinary credentials:
-        ```
+   3. **Set Up Cloudinary Environment Variables**
+      - Add the following to your `.env` file in the backend directory:
+        ```plaintext
         CLOUD_NAME=your_cloud_name
         API_KEY=your_api_key
         API_SECRET=your_api_secret
-         ```
+        ```
+      - Replace `your_cloud_name`, `your_api_key`, and `your_api_secret` with the credentials from your Cloudinary account.
 
-6. open terminal run `cd backend && npm install`.
-7. Open another terminal run ` cd frontend && npm install`(one for running Server and other for the frontend).
-8. To run server, go to backend directory run `nodemon run dev` and to run client, go to frontend directory and run `npm run dev`.
-9. Go to `http://localhost:3000` to see the application running.
-10. Go to `http://localhost:5173 to see the frontend`.
+6. **Install Backend Dependencies**
+   - Open a terminal and navigate to the backend directory: `cd backend`.
+   - Run `npm install` to install the backend dependencies.
+
+7. **Install Frontend Dependencies**
+   - Open another terminal and navigate to the frontend directory: `cd frontend`.
+   - Run `npm install` to install the frontend dependencies.
+
+8. **Run the Server**
+   - In the terminal where you installed backend dependencies, start the server with: `nodemon run dev`.
+
+9. **Run the Client**
+   - In the terminal where you installed frontend dependencies, start the frontend with: `npm run dev`.
+
+10. **Access the Application**
+    - Open your browser and go to `http://localhost:3000` to see the backend running.
+    - Open another tab and go to `http://localhost:5173` to see the frontend running.
+
+Make sure to follow the steps in order, and verify that everything is set up correctly before proceeding.
+
 
  ## Deployment
    ### Deploying Backend on Render.com

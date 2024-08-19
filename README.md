@@ -117,8 +117,6 @@ You need to remember to paste in the <dbUser> and <password>. Do NOT share it pu
  ## Deployment
    ### Deploying Backend on Render.com
 
-    This guide walks you through deploying your Node.js backend on Render.com.
-
 ### Prerequisites
 
 Before deploying your backend, ensure you have the following:
@@ -126,16 +124,16 @@ Before deploying your backend, ensure you have the following:
 - A Render.com account: Sign up at [Render.com](https://render.com/).
 - Your backend project pushed to a Git repository (e.g., GitHub, GitLab).
 
-## Deployment Steps
+### Deployment Steps
 
-### 1. Create a New Web Service on Render
+#### 1. Create a New Web Service on Render
 
 1. Log in to your [Render.com dashboard](https://dashboard.render.com/).
 2. Click on the **New** button in the top right corner and select **Web Service**.
 3. Connect your GitHub or GitLab account to Render (if not done already).
 4. Select the repository containing your backend code.
 
-### 2. Configure the Web Service
+#### 2. Configure the Web Service
 
 1. **Service Name**: Choose a name for your service (e.g., `job-finder-backend`).
 2. **Environment**: Set to `Node`.
@@ -143,17 +141,17 @@ Before deploying your backend, ensure you have the following:
 4. **Start Command**:Enter the command to start your server:`nodemon run dev`.
 5. **Region**: Select the region closest to your users.
 
-### 3. Set Up Environment Variables
+#### 3. Set Up Environment Variables
 1. Scroll down to the Environment section.
 2. Click on Add Environment Variable.
 3. Add all the environment variables required by your application (e.g., PORT, DATABASE_URL, JWT_SECRET, CLOUDINARY_CLOUD_NAME, etc.).
 
-### 4.Deploy the Service
+#### 4.Deploy the Service
 1. After configuring your environment variables, scroll down and click Create Web Service.
 2. Render will automatically build and deploy your backend.
 3. Monitor the build logs for any errors.
 
-### 5. Access Your Deployed Backend
+#### 5. Access Your Deployed Backend
 1. Once deployed, Render will provide you with a URL for your backend (e.g., https://job-finder-backend.onrender.com).
 2. Use this URL to access your API endpoints.
 
@@ -171,20 +169,20 @@ Before deploying your frontend, ensure you have the following:
 
 ### Deployment Steps
 
-### 1. Import Your Project to Vercel
+#### 1. Import Your Project to Vercel
 
 1. Log in to your [Vercel dashboard](https://vercel.com/dashboard).
 2. Click on the **New Project** button.
 3. Select the Git provider (GitHub, GitLab, Bitbucket) where your frontend repository is hosted.
 4. Find and import the repository containing your frontend code.
 
-### 2. Configure the Project
+#### 2. Configure the Project
 
 1. **Project Name**: Vercel will automatically use your repository name as the project name. You can change it if needed.
 2. **Framework Preset**: Vercel should automatically detect that you're using React. If not, select `React` from the list of frameworks.
 3. **Root Directory**: If your project is not in the root directory of your repository, specify the correct directory.
 
-### 3. Set Up Environment Variables (If Required)
+#### 3. Set Up Environment Variables (If Required)
 
 1. Scroll down to the **Environment Variables** section.
 2. Click on **Add** to define any environment variables your frontend requires (e.g., API URLs, authentication tokens).
@@ -194,34 +192,29 @@ Before deploying your frontend, ensure you have the following:
      ```
 3. Make sure these environment variables match those used in your local development.
 
-### 4. Deploy the Project
+#### 4. Deploy the Project
 
 1. Click the **Deploy** button.
 2. Vercel will automatically build and deploy your project.
 3. Monitor the deployment process through the Vercel dashboard. If successful, you will see a green checkmark.
 
-### 5. Access Your Deployed Frontend
+#### 5. Access Your Deployed Frontend
 
 - After deployment, Vercel will provide you with a URL for your frontend (e.g., `https://your-project-name.vercel.app`).
 - Use this URL to access your deployed application.
 
-### 6. Set Up Custom Domain (Optional)
+#### 6. Set Up Custom Domain (Optional)
 
 1. If you want to use a custom domain, go to your project’s settings on Vercel.
 2. Under the **Domains** section, click **Add Domain**.
 3. Follow Vercel’s instructions to link and configure your custom domain.
 
-### 7. Continuous Deployment
+#### 7. Continuous Deployment
 
 - Vercel will automatically redeploy your application whenever you push changes to the connected branch (e.g., `main`) in your Git repository.
 - To configure or disable auto-deploys, adjust the settings in your project’s Vercel dashboard.
 
-### Additional Configuration
-
-- **Build Settings**: You can customize your build settings by modifying the `vercel.json` file in your project’s root directory.
-- **Environment Variables**: Manage different environments (e.g., production, staging) by setting environment variables for each environment in Vercel.
-
-### Troubleshooting
+#### Troubleshooting
 
 - **Build Failures**: Review the build logs in Vercel’s dashboard for specific error messages.
 - **Environment Variables**: Ensure all necessary environment variables are correctly set in Vercel.
@@ -232,9 +225,9 @@ Before deploying your frontend, ensure you have the following:
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
 ```
--**CORS Issues**: Ensure your backend CORS settings allow requests from the Vercel frontend URL.
--**Environment Variables**: Verify that environment variables are correctly set in Vercel.
--**Proxy Configuration**: If using a proxy, ensure the proxy field in package.json points to the correct backend URL.
+- **CORS Issues**: Ensure your backend CORS settings allow requests from the Vercel frontend URL.
+- **Environment Variables**: Verify that environment variables are correctly set in Vercel.
+- **Proxy Configuration**: If using a proxy, ensure the proxy field in package.json points to the correct backend URL.
    
 
   

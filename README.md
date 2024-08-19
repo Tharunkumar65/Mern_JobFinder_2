@@ -93,22 +93,22 @@ SECRET_KEY=your secret key
 You need to remember to paste in the <dbUser> and <password>. Do NOT share it publicly, and do NOT include the .env file in commits.
 5. To integrate Cloudinary for handling file and image uploads in your application, follow these steps:
 
-1. **Sign Up for Cloudinary**
-   - Go to [Cloudinary](https://cloudinary.com/) and sign up for a free account.
+   1. **Sign Up for Cloudinary**
+       - Go to [Cloudinary](https://cloudinary.com/) and sign up for a free account.
 
-2. **Get Your Cloudinary Credentials**
-   - After signing up, navigate to your Cloudinary dashboard.
-   - Locate your **Cloud Name**, **API Key**, and **API Secret** in the dashboard.
+   2. **Get Your Cloudinary Credentials**
+      - After signing up, navigate to your Cloudinary dashboard.
+      - Locate your **Cloud Name**, **API Key**, and **API Secret** in the dashboard.
 
-3. **Set Up Environment Variables**
-   - Add the following lines to your `.env` file, replacing the placeholders with your actual Cloudinary credentials:
-     ```
-     CLOUD_NAME=your_cloud_name
-     API_KEY=your_api_key
-     API_SECRET=your_api_secret
-     ```
+   3. **Set Up Environment Variables**
+     - Add the following lines to your `.env` file, replacing the placeholders with your actual Cloudinary credentials:
+        ```
+        CLOUD_NAME=your_cloud_name
+        API_KEY=your_api_key
+        API_SECRET=your_api_secret
+         ```
 
-5. open terminal run `cd backend && npm install`.
+6. open terminal run `cd backend && npm install`.
 7. Open another terminal run ` cd frontend && npm install`(one for running Server and other for the frontend).
 8. To run server, go to backend directory run `nodemon run dev` and to run client, go to frontend directory and run `npm run dev`.
 9. Go to `http://localhost:3000` to see the application running.
